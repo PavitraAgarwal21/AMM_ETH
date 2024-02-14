@@ -55,14 +55,13 @@ token1Balance[msg.sender] = token1Balance[msg.sender].add(amountt1) ;
 token2Balance[msg.sender] = token2Balance[msg.sender].add(amountt2) ;
 }
 
+function getequivalenttoken1est(uint256 _amtToken1) public view activePool() returns (uint256 ) {
+    return totaltoken1.mul(_amtToken1).div(totaltoken2) ;
+}
 
-
-
-
-
-
-
-
+function getequivalenttoken2est(uint256 _amtToken2) public view activePool() returns (uint256 ) {
+    return totaltoken2.mul(_amtToken2).div(totaltoken1) ;
+}
 
 
 function provide (uint256 amountt1 , uint256 amountt2 ) external validAmountcheck(token1Balance , amountt1 ) validAmountcheck(token2Balance , amountt2 ) returns (uint256 share) {
